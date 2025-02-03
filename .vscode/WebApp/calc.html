@@ -80,22 +80,29 @@
     }
 </style>
 <body>
-    <h1>Weekly Work Update</h1>
+    <div class="container">
+        <div class="LoginUpdate">
+     <h1>Weekly Work Update</h1>
     <h2>Numbers of boys in the apartment</h2>
     <input type="number" name="userID" id="userID" placeholder="Enter your ID number">
     <button onclick="login()">Login</button> <br> <br>
     <strong id="loginUser"></strong>
     <p id="list"></p> <br> <br>
-    <h1>Digital Clock</h1>
-    <div id="clcock-container">
+        </div>
+
+        <table>
+            <ul id="userList">
+            <!-- User names will be appended here -->
+            </ul>
+        </table>
+        </div>
+        <h1>Digital Clock</h1>
+        <div id="clcock-container">
         <div id="clock">00:00:00</div>
-    </div>
+        </div>
 
-
-   
-    
-    <script>
-       let IdNumber = [
+        <script>
+           let IdNumber = [
            { name: 'Mohammed', id: '0170' },
            { name: 'Abdul', id: '0171' },
            { name: 'Ali', id: '0172' },
@@ -135,96 +142,68 @@
            { name: 'Abdullahi', id: '0206' },
            { name: 'Musa', id: '0207' },
            { name: 'Abdullahi', id: '0208' },
-       ];
+           ];
+          
+           let list = document.getElementById('list');
+           let loginUser = document.getElementById('loginUser');
+           let userList = document.getElementById('userList');
 
-       
-       let list = document.getElementById('list');
-         let loginUser = document.getElementById('loginUser');
-         let logTime = getfullTime();
-            function getfullTime() {
-                let date = new Date();
-                let hours = date.getHours();
-                let minutes = date.getMinutes();
-                let seconds = date.getSeconds();
-                let fullTime = hours + ':' + minutes + ':' + seconds;
-                return fullTime;
-            }   
+           function getfullTime() {
+           let date = new Date();
+           let hours = date.getHours();
+           let minutes = date.getMinutes();
+           let seconds = date.getSeconds();
+           let fullTime = hours + ':' + minutes + ':' + seconds;
+           return fullTime;
+           }   
 
-         function login() {
-              let userID = document.getElementById('userID').value;
-              let user = IdNumber.find(item => item.id === userID);
+           function login() {
+           let userID = document.getElementById('userID').value;
+           let user = IdNumber.find(item => item.id === userID);
 
+           if (userID.length === 0) {
+               list.innerHTML = 'Please enter your ID number';
+           } else if (isNaN(userID)) {
+               list.innerHTML = 'Enter a valid ID number not a string';
+           } else if (user) {
+               loginUser.innerHTML = user.name;
+               list.innerHTML = 'Loading...';
+               setTimeout(() => {
+               let logTime = getfullTime();
+               list.innerHTML = 'Thanks for logging in ' + user.name + ' at ' + logTime;
+               let listItem = document.createElement('li');
+               listItem.textContent = user.name + ' - ' + logTime;
+               userList.appendChild(listItem);
+               }, 1200);
 
-              if (userID.length === 0) {
-                  list.innerHTML = 'Please enter your ID number';
-              } else if (isNaN(userID)) {
-                  list.innerHTML = 'Enter a valid ID number not a string';
-              } else if (user) {
-                  loginUser.innerHTML = user.name;
-                  list.innerHTML = 'Loading...';
-                  setTimeout(() => {
-                      list.innerHTML = 'Thanks for logging in ' + user.name + ' at ' + logTime;
-                  }, 3000);
+               setTimeout(() => {
+               list.innerHTML = '';
+               }, 7000);
 
-                  setTimeout(() => {
-                      list.innerHTML = '';
-                  }, 7000);
+               setTimeout(() => {
+               list.innerHTML = '';
+               loginUser.innerHTML = '';
+               }, 9000);
+           } else {
+               loginUser.innerHTML = '';
+               list.innerHTML = 'ID number not found';
+           }
+           document.getElementById('userID').value = '';
+           }
 
-
-                  setTimeout(() => {
-                      list.innerHTML = '';
-                    loginUser.innerHTML = '';
-                  }, 9000);
-              } else {
-                  loginUser.innerHTML = '';
-                  list.innerHTML = 'ID number not found';
-              }
-      document.getElementById('userID').value = '';
-            }
-
-            function clock() {
-                let clock = document.getElementById('clock');
-                let date = new Date();
-                let hours = date.getHours();
-                const meridiem = hours >= 12 ? 'PM' : 'AM';
-                hours = hours % 12 || 12;
-                hours = hours.toString().padStart(2, '0');
-                let minutes = date.getMinutes().toString().padStart(2, '0');
-                let seconds = date.getSeconds().toString().padStart(2, '0');
-                let fullTime = hours + ':' + minutes + ':' + seconds + ' ' + meridiem;
-                clock.innerHTML = fullTime;
-            }
-            setInterval(clock, 1000);
-           
-            // const minNumber = 1;
-            // const maxNumber = 100;
-            // const randomNumber = Math.floor(Math.random() * (maxNumber - minNumber + 1)) + minNumber;
-            // const names = 'Mohammed';
-            // const inputField = document.getElementById('guess');
-            
-            // const playName = names [Math.floor(Math.random() * names.length)];
-            
-            // let attempts = 0;
-            // let guess;
-            // let running = true;
-
-            // while (running){
-            // guess = prompt("Guess a number between 1 and 100");
-            // guess = Number(guess);
-            // if (isNaN(guess)){
-            // alert("Please enter a number");
-            // } else if (guess < randomNumber){
-            // alert("Too low");
-            // attempts++;
-            // } else if (guess > randomNumber){
-            // alert("Too high");
-            // attempts++;
-            // } else {
-            // alert("Congratulations! You guessed the number in " + attempts + " attempts");
-            // running = false;
-            // }
-            // }
-    </script>
-    
+           function clock() {
+           let clock = document.getElementById('clock');
+           let date = new Date();
+           let hours = date.getHours();
+           const meridiem = hours >= 12 ? 'PM' : 'AM';
+           hours = hours % 12 || 12;
+           hours = hours.toString().padStart(2, '0');
+           let minutes = date.getMinutes().toString().padStart(2, '0');
+           let seconds = date.getSeconds().toString().padStart(2, '0');
+           let fullTime = hours + ':' + minutes + ':' + seconds + ' ' + meridiem;
+           clock.innerHTML = fullTime;
+           }
+           setInterval(clock, 1000);
+        </script>
 </body>
 </html>

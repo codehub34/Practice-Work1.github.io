@@ -108,6 +108,23 @@
         </div>
     </div>
 
+    <div class="workContainer">
+        <div class="logUpdate">
+            <h1>Weekly Work Report</h1>
+            <h3>Numbers of works a day and their login Time</h3>
+            <input type="number" name="userID" id="userID" placeholder="Please Enter your ID#">
+            <button type="button" onclick="login()">Login</button><br> <br>
+            <span id="userLogin"></span>
+            <p id="message"></p>
+        </div>
+
+        <div class="logContainer">
+            <ul id="userReport">
+
+            </ul>
+        </div>
+    </div>
+
 <script>
 
     function openNav() {
@@ -141,6 +158,95 @@
     document.querySelectorAll('.navLinks').forEach(link => {
         link.addEventListener('click', closeNav);
     });
+
+    // Workers Login Information
+    // Workers Name and their IdNumber
+    let IdNumber = [
+           { name: 'Mohammed', id: '0170' },
+           { name: 'Abdul', id: '0171' },
+           { name: 'Ali', id: '0172' },
+           { name: 'Ahmed', id: '0173' },
+           { name: 'Omar', id: '0174' },
+           { name: 'Yusuf', id: '0175' },
+           { name: 'Ibrahim', id: '0176' },
+           { name: 'Usman', id: '0177' },
+           { name: 'Suleiman', id: '0178' },
+           { name: 'Abubakar', id: '0179' },
+           { name: 'Musa', id: '0180' },
+           { name: 'Haruna', id: '0181' },
+           { name: 'Bashir', id: '0182' },
+           { name: 'Kabir', id: '0183' },
+           { name: 'Nasir', id: '0184' },
+           { name: 'Sani', id: '0185' },
+           { name: 'Yakubu', id: '0186' },
+           { name: 'Musa', id: '0187' },
+           { name: 'Abdullahi', id: '0188' },
+           { name: 'Musa', id: '0189' },
+           { name: 'Abdullahi', id: '0190' },
+           { name: 'Musa', id: '0191' },
+           { name: 'Abdullahi', id: '0192' },
+           { name: 'Musa', id: '0193' },
+           { name: 'Abdullahi', id: '0194' },
+           { name: 'Musa', id: '0195' },
+           { name: 'Abdullahi', id: '0196' },
+           { name: 'Musa', id: '0197' },
+           { name: 'Abdullahi', id: '0198' },
+           { name: 'Musa', id: '0199' },
+           { name: 'Abdullahi', id: '0200' },
+           { name: 'Musa', id: '0201' },
+           { name: 'Abdullahi', id: '0202' },
+           { name: 'Musa', id: '0203' },
+           { name: 'Abdullahi', id: '0204' },
+           { name: 'Musa', id: '0205' },
+           { name: 'Abdullahi', id: '0206' },
+           { name: 'Musa', id: '0207' },
+           { name: 'Abdullahi', id: '0208' },
+           ];
+
+           let UserLogin = document.getElementById('userLogin');
+           let message = document.getElementById('message');
+           let userReport = document.getElementById('userReport');
+        
+           let logTime = getfullTime();
+
+           function getfullTime(){
+            let date = new Date();
+            let hours = date.getHours();
+            let minutes = date.getMinutes();
+            let seconds = date.getSeconds();
+            let fullTime = hours + ':' + minutes + ':' + seconds;
+            return fullTime;
+           }
+
+           function login(){
+            let userID = document.getElementById('userID').value;
+            let user = IdNumber.find(item => item.id === userID);
+
+            // Let use the if statement to determine the user Input
+
+            if(userID.length === 0){
+                alert('User has not entered any value ')
+                userLogin.innerHTML = 'Please enter your ID';
+            } else if (isNaN(userID)){
+                alert('User ID accepts only Number Characters');
+                message.innerHTML = 'Please enter ID Number';
+            } else if (user) {
+                userLogin.innerHTML = user.name;
+                message.innerHTML = 'Loading ....';
+                setTimeout(() => {
+                    let logTime = getfullTime();
+                    message.innerHTML = 'Thanks for logging in ' + user.name + ' at ' + logTime;
+                    alert('Welcome ' + user.name);
+                }, 3000);
+            }
+
+            else{
+                userLogin.innerHTML = '';
+                message.innerHTML = 'ID # is not found';
+            }
+            document.getElementById('userID').value = '';
+           }
+
 
 </script>
 
