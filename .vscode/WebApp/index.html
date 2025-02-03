@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <style>
+        body {
+            background-color: rgba(72, 182, 145, 0.879);
+            color: white;
+            text-align: center;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        #userInput {
+            padding: 10px 15px;
+            font-size: 1.2em;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 8px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Temperature Converter</h1>
+    <input type="number" id="userInput" placeholder="Enter temperature"><br><br>
+    <input type="radio" name="conversion" id="tofahrenheit"> 
+    <label for="tofahrenheit">Fahrenheit</label><br>
+    <input type="radio" name="conversion" id="tocelsius"> 
+    <label for="tocelsius">Celsius</label><br><br>
+    <button id="convert" onclick="converter()">Convert</button>
+    <p id="result"></p>
+
+    <div id="container">
+        <h2>Simple Calculator</h2>
+        <input type="text" id="num1" placeholder="Enter first number"> <!-- Corrected typo -->
+        <select name="" id="operator"> <!-- Changed id to match JavaScript -->
+            <option value="add">+</option>
+            <option value="subtract">-</option>
+            <option value="multiply">*</option>
+            <option value="divide">/</option>
+        </select>
+        <br><br>
+        <input type="text" id="num2" placeholder="Enter second number">
+        <button onclick="calculate()">Calculate</button>
+        <p id="answer"></p>
+    </div>
+    
+    <script>
+        let isUserLoggedIn = false;
+        const h1 = document.querySelector("h1");
+
+        // Ask for username and password if not logged in
+        // while (!isUserLoggedIn) {
+        //     const userName = window.prompt('Enter your Name');
+        //     const password = window.prompt('Enter your password');
+        //     if (userName === "Masscode" && password === "hub",
+        //          userName === "Mass" && password === "code") {
+        //         h1.textContent = `You're logged in, ${userName}`;
+        //         isUserLoggedIn = true;
+        //     } else {
+        //         alert("Please try again");
+        //     }
+        // }
+
+        function calculate() {
+    let num1 = parseFloat(document.getElementById("num1").value);
+    let operation = document.getElementById("operator").value;
+    let num2 = parseFloat(document.getElementById("num2").value);
+    let answer;
+
+    switch (operation) {
+        case "add":
+            answer = num1 + num2;
+            break;
+        case "subtract":
+            answer = num1 - num2;
+            break;
+        case "multiply":
+            answer = num1 * num2;
+            break;
+        case "divide":
+            answer = num1 / num2;
+            break;
+        default:
+            answer = "Invalid Operator";
+    }
+
+    document.getElementById("answer").textContent = "Answer: " + answer;
+}
+
+
+        // Temperature conversion logic
+        const userInput = document.getElementById("userInput");
+        const fahrenheit = document.getElementById("tofahrenheit");
+        const celsius = document.getElementById("tocelsius");
+        const result = document.getElementById("result");
+
+        function converter() {
+            let temp = Number(userInput.value);
+            if (fahrenheit.checked) {
+                temp = temp * 9 / 5 + 32;
+                result.textContent = temp.toFixed(1) + "°F";
+            } else if (celsius.checked) {
+                temp = (temp - 32) * 5 / 9;
+                result.textContent = temp.toFixed(1) + "°C";
+            } else {
+                result.textContent = "Select a unit";
+            }
+        }
+    </script>
+</body>
+</html>

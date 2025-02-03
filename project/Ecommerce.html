@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mass Electronics</title>
+    <link rel="stylesheet" href="ecommerc.css">
+</head>
+<body>
+<div class="nav-container">
+    <div class="nav-headDisplay">
+        <div class="nav-logo">
+            <!-- <img src="online-shopping.png" alt="online-shopping" width="50px"> -->
+        <h1>Mass Electronics</h1>
+        </div>
+
+    </div>
+
+
+    <div class="nav-links">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Clients</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </div>
+<!-- Media Navbar -->
+
+<div class="navBtn">
+    <button class="contactBtn1">Contact</button>
+    <button class="storeBtn1">Store</button>
+</div>
+
+    <div class="nav-media">
+
+<div id="mySidebar" class="sidebar">
+    <div class="logo">
+        <img src="online-shopping" alt="online-shopping" width="50px">
+        <h1>Mass Electronics Inc</h1>
+    </div>
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    <a class="navLinks" href="#">Home</a>
+    <a class="navLinks" href="#">Services</a>
+    <a class="navLinks" href="#">Clients</a>
+    <a class="navLinks" href="#">Contact</a>
+
+
+<div class="navBtnMeun">
+    <button class="contactBtn">Contact</button>
+    <button class="storeBtn">Store</button>
+</div>
+
+</div>
+
+
+
+<div id="main">
+    <button class="openbtn" onclick="openNav()">☰</button> 
+</div>
+</div>
+    </div>
+    <div class="container">
+
+<div class="cart">
+    <img src="online-shopping.png" alt="online-shopping">
+</div>
+        <div class="header-content">
+            <h1>Mass Electronics Incorporated</h1>
+            <p>We bring you the best brands product 
+                that you will always love!</p>
+        </div>
+        <div class="productContainer">
+            <div class="productItem">
+                <div class="ProductName">
+                    <img class="
+                    phones" src="Iphone 15pro.jpg" alt="Iphones">
+                    <p>Iphone 15 pro Max</p>
+                </div>
+
+                <div class="ProductName">
+                    <img src="Iphone 15pro.jpg" alt="Iphones">
+                    <p>Iphone 15 pro Max</p>
+                </div>
+
+                <div class="ProductName">
+                    <img src="slider.jpg" alt="Iphones">
+                    <p>Iphone 15 pro Max</p>
+                </div>
+
+                <div class="ProductName">
+                    <img  class="
+                    phones"src="promax.webp" alt="Iphones">
+                    <p>Iphone 15 pro Max</p>
+                </div>
+
+                <div class="ProductName">
+                    <img  class="
+                    phones"src="Iphone 15pro.jpg" alt="Iphones">
+                    <p>Iphone 15 pro Max</p>
+                </div>
+
+                <div class="ProductName">
+                    <img src="Iphone 15pro.jpg" alt="Iphones">
+                    <p>Iphone 15 pro Max</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    function openNav() {
+        const mySidebar = document.getElementById("mySidebar");
+        const main = document.getElementById("main");
+        const openbtn = document.querySelector('.openbtn');
+        
+        if (window.matchMedia("(min-width: 601px) and (max-width: 1024px)").matches) {
+            mySidebar.style.width = "350px";
+        } 
+
+        else if (window.matchMedia("(max-width: 600px)").matches) {
+            mySidebar.style.width = "100%";
+        }
+        
+        else {
+            mySidebar.style.width = "250px";
+        }
+        
+        main.style.marginLeft = "0";
+        openbtn.style.display = "none";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidebar").style.width = "0";
+        document.getElementById("main").style.marginLeft= "0";
+        const openbtn = document.querySelector('.openbtn');
+        openbtn.style.display = "block";
+    }
+
+    document.querySelectorAll('.navLinks').forEach(link => {
+        link.addEventListener('click', closeNav);
+    });
+
+</script>
+
+</body>
+</html>
