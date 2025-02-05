@@ -241,6 +241,8 @@
                     let logTime = getfullTime();
                     message.innerHTML = '';
                     userLogin.innerHTML = '';
+                    userLogin.style.animationPlayState = 'running';
+                    userLogin.style.animation = 'fadeIn 3s';
                 }, 6000);
 
                 let logoutButton;
@@ -251,6 +253,10 @@
                     listuserReport.append(`${listNumber}. ${user.name} LogIn at: ${logTime}`);
                     logoutButton = document.createElement('button');
                     logoutButton.textContent = 'LogOut';
+                    logoutButton.className = 'logoutBtn';
+                    logoutButton.addEventListener('click', () => {
+                            userReport.removeChild(listuserReport);
+                        });
                     listuserReport.appendChild(logoutButton);
                     userReport.appendChild(listuserReport);
                 }, 8000);

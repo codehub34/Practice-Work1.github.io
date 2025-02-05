@@ -468,7 +468,28 @@ body{
     background-color: #061651;
     color: white;
     padding: 50px ;
+    width: 100%;
     font-size: 1.5em;
+    margin-top: 45px;
     flex-wrap: wrap;
+    gap: 45px;
 }
 
+li{
+    border: 2px white;
+    /* background-color: #1ab5c6; */
+    padding: 10px;
+    border-collapse:collapse ;
+ 
+}
+
+.logoutBtn{
+    margin-left:10px ;
+    padding: 10px 15px;
+    border: none;
+    background-color: hsl(48, 98%, 48%);
+    font-weight: 600;
+    font-size: 16px;
+    border-radius: 14px;
+    color: rgb(8, 1, 68);
+}
