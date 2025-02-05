@@ -221,9 +221,8 @@
            function login(){
             let userID = document.getElementById('userID').value;
             let user = IdNumber.find(item => item.id === userID);
-
+            let userReport = document.getElementById('userReport');
             // Let use the if statement to determine the user Input
-
             if(userID.length === 0){
                 alert('User has not entered any value ')
                 userLogin.innerHTML = 'Please enter your ID';
@@ -236,8 +235,25 @@
                 setTimeout(() => {
                     let logTime = getfullTime();
                     message.innerHTML = 'Thanks for logging in ' + user.name + ' at ' + logTime;
-                    alert('Welcome ' + user.name);
-                }, 3000);
+                }, 2000);
+
+                setTimeout(() => {
+                    let logTime = getfullTime();
+                    message.innerHTML = '';
+                    userLogin.innerHTML = '';
+                }, 6000);
+
+                let logoutButton;
+                setTimeout(() => {
+                    let logTime = getfullTime();
+                    let listuserReport = document.createElement('li');
+                    let listNumber = userReport.getElementsByTagName('li').length + 1;
+                    listuserReport.append(`${listNumber}. ${user.name} LogIn at: ${logTime}`);
+                    logoutButton = document.createElement('button');
+                    logoutButton.textContent = 'LogOut';
+                    listuserReport.appendChild(logoutButton);
+                    userReport.appendChild(listuserReport);
+                }, 8000);
             }
 
             else{
@@ -245,9 +261,7 @@
                 message.innerHTML = 'ID # is not found';
             }
             document.getElementById('userID').value = '';
-           }
-
-
+        }
 </script>
 
 </body>

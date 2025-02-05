@@ -469,5 +469,6 @@ body{
     color: white;
     padding: 50px ;
     font-size: 1.5em;
+    flex-wrap: wrap;
 }
 
