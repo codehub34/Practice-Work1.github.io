@@ -377,7 +377,7 @@ body{
 .container{
     height: 100vh;
     text-align: center;
-    background-image: url(slider.jpg);
+    background-image: url(slider.jg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -470,16 +470,17 @@ body{
     padding: 50px ;
     width: 100%;
     font-size: 1.5em;
-    margin-top: 45px;
+    margin-top: 2em;
     flex-wrap: wrap;
     gap: 45px;
 }
 
 li{
     border: 2px white;
-    /* background-color: #1ab5c6; */
+   
     padding: 10px;
     border-collapse:collapse ;
+   
  
 }
 
@@ -492,4 +493,68 @@ li{
     font-size: 16px;
     border-radius: 14px;
     color: rgb(8, 1, 68);
+}
+
+#userID{
+    width: 200px;
+    padding: 8px;
+    height: 40px;
+    font-size: 18px;
+    text-align: center;
+    margin-top: 2em;
+}
+#loginBtn{
+    padding: 10px 15px;
+    font-size: 0.8em;
+    width: 200px;
+    background-color: hsl(43, 99%, 63%);
+    border: none;
+    margin-top: 10px;
+    border-radius: 15px;
+    color: hsla(240, 100%, 50%, 0.866);
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+   
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+#loginBtn::before, #loginBtn::after{
+    content: 'Mass';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #1ab5c6;
+    transition: all 0.3s ease;
+    z-index: -1;
+}
+
+#loginBtn::before{
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+#loginBtn::after{
+    transform: scaleX(0);
+    transform-origin: right;
+}
+
+#loginBtn:active{
+    transform: scaleX(1.4);
+    background-color: aqua;
+}
+
+#loginBtn:hover{
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    transition: all 0.4s ease;
+    text-shadow: rgb(244, 172, 3) 2.5em 0px 2px ;
+    text-overflow: unset;
+    -webkit-text-stroke: #f60404 1px;
 }
